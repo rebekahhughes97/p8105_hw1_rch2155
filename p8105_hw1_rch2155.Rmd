@@ -1,13 +1,12 @@
 ---
 title: "P8105 Homework 1"
 author: "Rebekah Hughes"
-date: 2020-09-15
 output: github_document
 ---
 
 The following code loads the package used in problem 1:
 
-```{r, echo = FALSE}
+```{r, messages = FALSE}
 library (tidyverse)
 ```
 
@@ -66,7 +65,7 @@ The following code retrieves the data set "penguins" to be used in this problem:
 data ("penguins", package = "palmerpenguins")
 ```
 
-The different categorical variables in the data set and their values are: species, including Adelie, Gentoo and Chinstrap species; island, including Torgersen, Biscoe and Dream islands; sex, divided into male and female; and year, including 2007, 2008 and 2009. Since there is not data available for at least one of the penguins for all of the quantitative variables, the missing variable has to be removed from the mean calculations. The mean of bill length is `r mean (pull (penguins, bill_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_length_mm), na.rm = 'true')`. The mean of bill depth is `r mean (pull (penguins, bill_depth_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_depth_mm), na.rm = 'true')`. The mean body mass is `r mean (pull (penguins, body_mass_g), na.rm = 'true')` g with a standard deviation of `r sd (pull (penguins, body_mass_g), na.rm = 'true')`.The mean for flipper length is `r mean (pull (penguins, flipper_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, flipper_length_mm), na.rm = 'true')`. The penguins data set includes `r ncol (penguins)` columns and `r nrow (penguins)` rows.
+The different categorical variables in the data set and their values are: species, including Adelie, Gentoo and Chinstrap species; island, including Torgersen, Biscoe and Dream islands; sex, divided into male and female; and year, including 2007, 2008 and 2009. Since there is not data available for at least one of the penguins for all of the quantitative variables, the missing variable has to be removed from the mean calculations. The mean of bill length is `r mean (pull (penguins, bill_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_length_mm), na.rm = 'true')` mm. The mean of bill depth is `r mean (pull (penguins, bill_depth_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_depth_mm), na.rm = 'true')` mm. The mean body mass is `r mean (pull (penguins, body_mass_g), na.rm = 'true')` g with a standard deviation of `r sd (pull (penguins, body_mass_g), na.rm = 'true')` g.The mean for flipper length is `r mean (pull (penguins, flipper_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, flipper_length_mm), na.rm = 'true')` mm. The penguins data set includes `r ncol (penguins)` columns and `r nrow (penguins)` rows.
 
 The following code builds a scatterplot of the penguins data set with Bill Length on the x-axis and Flipper Length on the y-axis and the color depending on species.
 
@@ -80,6 +79,6 @@ As displayed in the scatterplot, the species cluster around each other with Gent
 
 The following code saves the above plot of the "penguins" data set to the project directory:
 
-```{r, warning = FALSE}
+```{r, warning = FALSE, message = FALSE}
 ggsave ("penguins.pdf")
 ```
