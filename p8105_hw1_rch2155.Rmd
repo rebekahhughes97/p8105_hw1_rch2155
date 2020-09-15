@@ -59,3 +59,13 @@ num_fact_log = as.numeric (fact2_log) * hw1_p1_df$rand_samp
 The first code line that converts the logical vector to numeric is able to be multiplied by the random sample variable and comes out with a numeric answer. The second code line that converts the logical vector to a factor is not able to be multiplied by the random sample variable because the factor is not numeric. The third code line combined with the fourth code line together correct the problem from the second code line and are able to be multiplied by the random sample variable successfully.
 
 ## Problem 2
+
+The following code retrieves the data set "penguins" to be used in this problem:
+
+```{r}
+data ("penguins", package = "palmerpenguins")
+```
+
+The different categorical variables in the data set and their values are: species, including Adelie, Gentoo and Chinstrap species; island, including Torgersen, Biscoe and Dream islands; sex, divided into male and female; and year, including 2007, 2008 and 2009. Since there is not data available for at least one of the penguins for all of the quantitative variables, the missing variable has to be removed from the mean calculations. The mean of bill length is `r mean (pull (penguins, bill_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_length_mm), na.rm = 'true')`. The mean of bill depth is `r mean (pull (penguins, bill_depth_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_depth_mm), na.rm = 'true')`. The mean body mass is `r mean (pull (penguins, body_mass_g), na.rm = 'true')` g with a standard deviation of `r sd (pull (penguins, body_mass_g), na.rm = 'true')`.The mean for flipper length is `r mean (pull (penguins, flipper_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, flipper_length_mm), na.rm = 'true')`. The penguins data set includes `r ncol (penguins)` columns and `r nrow (penguins)` rows.
+
+
