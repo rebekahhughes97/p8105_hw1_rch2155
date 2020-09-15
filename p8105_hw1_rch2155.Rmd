@@ -69,16 +69,9 @@ The different categorical variables in the data set and their values are: specie
 
 The following code builds a scatterplot of the penguins data set with Bill Length on the x-axis and Flipper Length on the y-axis and the color depending on species.
 
-```{r, warning = FALSE}
-ggplot (penguins, aes (x = bill_length_mm,
-                       y = flipper_length_mm,
-                       color = species)) + geom_point()
-```
 
+                       
 As displayed in the scatterplot, the species cluster around each other with Gentoo having the largest flipper length and a large bill length, Chinstrap having a small flipper length and a large bill lenth and Adelie having the smallest flipper length and bill length.
 
 The following code saves the above plot of the "penguins" data set to the project directory:
 
-```{r, warning = FALSE, message = FALSE}
-ggsave ("penguins.pdf")
-```
