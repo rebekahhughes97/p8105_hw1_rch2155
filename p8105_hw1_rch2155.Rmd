@@ -6,7 +6,7 @@ output: github_document
 
 The following code loads the package used in problem 1:
 
-```{r, messages = FALSE}
+```{r, results = 'hide'}
 library (tidyverse)
 ```
 
