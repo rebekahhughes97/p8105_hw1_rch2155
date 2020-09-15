@@ -1,6 +1,6 @@
 ---
 title: "P8105 Homework 1"
-author: "Rebekah Hughes"
+author: Rebekah Hughes
 output: github_document
 ---
 
@@ -39,20 +39,20 @@ Of the above mean calculations, only the means for the random sample and the log
 Next, the following code converts the logical vector, character vector and factor vector variables to numeric.
 
 ```{r, results = 'hide', warning = FALSE}
-log_numeric = as.numeric (hw1_p1_df$rand_samp_pos)
-char_numeric = as.numeric (hw1_p1_df$rand_samp_char)
-fact_numeric =  as.numeric (hw1_p1_df$rand_samp_fact)
+log_numeric = as.numeric (pull (hw1_p1_df, rand_samp_pos))
+char_numeric = as.numeric (pull (hw1_p1_df, rand_samp_char))
+fact_numeric =  as.numeric (pull (hw1_p1_df, rand_samp_fact))
 ```
 
-In the code above only the logical vector variable and the factor vector variable are successfully able to be converted to numeric form. The character vector variable is not able to be converted to numeric.
+In the code above only the logical vector variable and the factor vector variable are successfully able to be converted to numeric form. The character vector variable is not able to be converted to numeric because it is not applicable.
 
 The next bit of code first converts the logical vector to numeric, as shown by the new variable "num_log", and then multiples that result by the random sample variable. Second, the logical vector is converted to a factor, as shown by the variable "fact_log", and is then again multiplied by the random sample variable. Third, the logical vector is converted to a factor, as shown by the variable "fact2_log", then is converted to numeric, as shown by the variable "num_fact_log", and then is ultimately multiplied by the random sample variable.
 
 ```{r, warning = FALSE}
-num_log = as.numeric (hw1_p1_df$rand_samp_pos) * hw1_p1_df$rand_samp
-fact_log = as.factor (hw1_p1_df$rand_samp_pos) * hw1_p1_df$rand_samp
-fact2_log = as.factor (hw1_p1_df$rand_samp_pos)
-num_fact_log = as.numeric (fact2_log) * hw1_p1_df$rand_samp
+num_log = as.numeric (pull (hw1_p1_df, rand_samp_pos)) * pull (hw1_p1_df, rand_samp)
+fact_log = as.factor (pull (hw1_p1_df, rand_samp_pos)) * pull (hw1_p1_df, rand_samp)
+fact2_log = as.factor (pull (hw1_p1_df, rand_samp_pos))
+num_fact_log = as.numeric (fact2_log) * pull (hw1_p1_df, rand_samp)
 ```
 
 The first code line that converts the logical vector to numeric is able to be multiplied by the random sample variable and comes out with a numeric answer. The second code line that converts the logical vector to a factor is not able to be multiplied by the random sample variable because the factor is not numeric. The third code line combined with the fourth code line together correct the problem from the second code line and are able to be multiplied by the random sample variable successfully.
@@ -65,7 +65,7 @@ The following code retrieves the data set "penguins" to be used in this problem:
 data ("penguins", package = "palmerpenguins")
 ```
 
-The different categorical variables in the data set and their values are: species, including Adelie, Gentoo and Chinstrap species; island, including Torgersen, Biscoe and Dream islands; sex, divided into male and female; and year, including 2007, 2008 and 2009. Since there is not data available for at least one of the penguins for all of the quantitative variables, the missing variable has to be removed from the mean calculations. The mean of bill length is `r mean (pull (penguins, bill_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_length_mm), na.rm = 'true')` mm. The mean of bill depth is `r mean (pull (penguins, bill_depth_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_depth_mm), na.rm = 'true')` mm. The mean body mass is `r mean (pull (penguins, body_mass_g), na.rm = 'true')` g with a standard deviation of `r sd (pull (penguins, body_mass_g), na.rm = 'true')` g.The mean for flipper length is `r mean (pull (penguins, flipper_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, flipper_length_mm), na.rm = 'true')` mm. The penguins data set includes `r ncol (penguins)` columns and `r nrow (penguins)` rows.
+The different categorical variables in the data set and their values are: species, including Adelie, Gentoo and Chinstrap species; island, including Torgersen, Biscoe and Dream islands; sex, divided into male and female; and year, including 2007, 2008 and 2009. Since there is not data available for at least one of the penguins for all of the quantitative variables, the missing variable has to be removed from the mean calculations. The mean of bill length is `r mean (pull (penguins, bill_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_length_mm), na.rm = 'true')` mm. The mean of bill depth is `r mean (pull (penguins, bill_depth_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, bill_depth_mm), na.rm = 'true')` mm. The mean body mass is `r mean (pull (penguins, body_mass_g), na.rm = 'true')` g with a standard deviation of `r sd (pull (penguins, body_mass_g), na.rm = 'true')` g. The mean flipper length is `r mean (pull (penguins, flipper_length_mm), na.rm = 'true')` mm with a standard deviation of `r sd (pull (penguins, flipper_length_mm), na.rm = 'true')` mm. The penguins data set includes `r ncol (penguins)` columns and `r nrow (penguins)` rows.
 
 The following code builds a scatterplot of the penguins data set with Bill Length on the x-axis and Flipper Length on the y-axis and the color depending on species.
 
