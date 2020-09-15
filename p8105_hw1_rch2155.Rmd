@@ -5,14 +5,20 @@ date: 2020-09-15
 output: github_document
 ---
 
+The following code loads the package used in problem 1:
+
+```{r, echo = FALSE}
+library (tidyverse)
+```
+
+
 ## Problem 1
 
 The following code creates a data frame, labeled as "hw1_p1_df", with four variables, including a random sample that follows a normal distribution of sample size 10, a logical vector indicating elements greater than 0 as "true", a character vector of length 10 and a factor vector of length 10 and with 3 different levels.
 
-```{r, results = 'hide'}
-library (tidyverse)
+```{r}
 hw1_p1_df = tibble (
-  rand_samp = rnorm (10, sd = 0.5),
+  rand_samp = rnorm (10),
   rand_samp_pos = rand_samp > 0,
   rand_samp_char = c("Apple", "Lemon", "Lime", "Pear", "Plum", "Peach", "Berry", "Cherry", "Mango", "Melon"),
   rand_samp_fact = factor (c("red", "yellow", "green", "yellow", "red", "red", "red", "red", "yellow", "green")))
@@ -23,10 +29,10 @@ The data frame created has 10 observations and 4 variables.
 Below, the means of each of the 4 variables from the data frame is computed.
 
 ```{r, warning = FALSE}
-rand_samp_av = mean (pull (hw1_p1_df, rand_samp))
-log_av = mean (pull (hw1_p1_df, rand_samp_pos))
-char_av = mean (pull (hw1_p1_df, rand_samp_char))
-fact_av = mean (pull (hw1_p1_df, rand_samp_fact))
+mean (pull (hw1_p1_df, rand_samp))
+mean (pull (hw1_p1_df, rand_samp_pos))
+mean (pull (hw1_p1_df, rand_samp_char))
+mean (pull (hw1_p1_df, rand_samp_fact))
 ```
 
 Of the above mean calculations, only the means for the random sample and the logical vector variables were able to be determined becasue they are numeric.
@@ -41,5 +47,15 @@ fact_numeric =  as.numeric (hw1_p1_df$rand_samp_fact)
 
 In the code above only the logical vector variable and the factor vector variable are successfully able to be converted to numeric form. The character vector variable is not able to be converted to numeric.
 
+The next bit of code first converts the logical vector to numeric, as shown by the new variable "num_log", and then multiples that result by the random sample variable. Second, the logical vector is converted to a factor, as shown by the variable "fact_log", and is then again multiplied by the random sample variable. Third, the logical vector is converted to a factor, as shown by the variable "fact2_log", then is converted to numeric, as shown by the variable "num_fact_log", and then is ultimately multiplied by the random sample variable.
 
+```{r, warning = FALSE}
+num_log = as.numeric (hw1_p1_df$rand_samp_pos) * hw1_p1_df$rand_samp
+fact_log = as.factor (hw1_p1_df$rand_samp_pos) * hw1_p1_df$rand_samp
+fact2_log = as.factor (hw1_p1_df$rand_samp_pos)
+num_fact_log = as.numeric (fact2_log) * hw1_p1_df$rand_samp
+```
 
+The first code line that converts the logical vector to numeric is able to be multiplied by the random sample variable and comes out with a numeric answer. The second code line that converts the logical vector to a factor is not able to be multiplied by the random sample variable because the factor is not numeric. The third code line combined with the fourth code line together correct the problem from the second code line and are able to be multiplied by the random sample variable successfully.
+
+## Problem 2
