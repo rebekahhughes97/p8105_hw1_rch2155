@@ -2,7 +2,7 @@
 title: "P8105 Homework 1"
 author: "Rebekah Hughes"
 date: 2020-09-15
-output: git_document
+output: github_document
 ---
 
 ## Problem 1
@@ -22,7 +22,7 @@ The data frame created has 10 observations and 4 variables.
 
 Below, the means of each of the 4 variables from the data frame is computed.
 
-```{r, warning = false}
+```{r, warning = FALSE}
 rand_samp_av = mean (pull (hw1_p1_df, rand_samp))
 log_av = mean (pull (hw1_p1_df, rand_samp_pos))
 char_av = mean (pull (hw1_p1_df, rand_samp_char))
@@ -31,6 +31,15 @@ fact_av = mean (pull (hw1_p1_df, rand_samp_fact))
 
 Of the above mean calculations, only the means for the random sample and the logical vector variables were able to be determined becasue they are numeric.
 
+Next, the following code converts the logical vector, character vector and factor vector variables to numeric.
+
+```{r, results = 'hide', warning = FALSE}
+log_numeric = as.numeric (hw1_p1_df$rand_samp_pos)
+char_numeric = as.numeric (hw1_p1_df$rand_samp_char)
+fact_numeric =  as.numeric (hw1_p1_df$rand_samp_fact)
+```
+
+In the code above only the logical vector variable and the factor vector variable are successfully able to be converted to numeric form. The character vector variable is not able to be converted to numeric.
 
 
 
